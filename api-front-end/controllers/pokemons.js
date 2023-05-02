@@ -3,7 +3,7 @@ import Pokemon from "../models/Pokemon.js";
 export const getPokemons = async (req, res) => {
   try {
     const pokemons = await Pokemon.find();
-    res.json(cats);
+    res.json(pokemons);
   } catch (error) {
     console.log(error.message);
     res.status(500).json({ error: error.message });
@@ -26,7 +26,7 @@ export const createPokemon = async (req, res) => {
   try {
     const pokemon = new Pokemon(req.body);
     await pokemon.save();
-    res.status(201).json(cat);
+    res.status(201).json(pokemon);
   } catch (error) {
     console.log(error.message);
     res.status(500).json({ error: error.message });
