@@ -1,56 +1,24 @@
-import { useState, useEffect } from 'react';
-
-// function Chinpokomon({ name, weight }) {
-//   return (
-//     <div>
-//      <h1>{name}</h1>
-//      <p>{weight}</p>
-//      <img src="https://picsum.photos/200" alt="placeholder image for "{name} />
-//     </div>
-//   );
-// }
+import Home from "./screens/Home.jsx";
+import Nav from "./components/Nav.jsx";
+import Pokemons from "./screens/Pokemons.jsx";
+import DetailPokemon from "./screens/DetailPokemon.jsx";
+import CreatePokemon from "./screens/CreatePokemon.jsx";
+import EditPokemon from "./screens/EditPokemon.jsx";
+import { Routes, Route } from "react-router-dom";
+import "./App.css";
 
 function App() {
-  const [data, setData] = useState([]);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
-
-  let [number, setNumber] = useState(0)
-
-  const destroy = () => {
-    setNumber(number++)
-  }
-  
-  useEffect(() => {
-    setLoading(true);
-    fetch(
-      `https://simple-pokemon-api.herokuapp.com/pokemon`
-      )
-      .then(response => response.json())
-      .then(pokemon => setData(pokemon))
-      .then(() => setLoading(false))
-      .catch(setError);
-  }, []);
-
-  console.log(data)
-
-  if(loading) return <h1>Loading...</h1>;
-  if(error) return <pre>{JSON.stringify(error)}</pre>;
-  if(!data) return null;
   return (
-    // <Chinpokomon 
-    //   name={data.name}
-    //   weight={data.weight}
-    // />
-    <>
-    {/* {data.map(pokemon => 
-    
-    <h2>{pokemon.name}</h2>
-
-    )} */}
-    <h1>{number}</h1>
-    <button onClick={destroy}>+1</button>
-    </>
+    <div className="App">
+      <Nav />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/pokemons" element={<Pokemons />} />
+        <Route path="/pokemons/:id" element={<DetailPokemon />} />
+        <Route path="/add-pokemon" element={<CreatePokemon />} />
+        <Route path="/pokemons/:id/edit" element={<EditPokemon />} />
+      </Routes>
+    </div>
   );
 }
 
