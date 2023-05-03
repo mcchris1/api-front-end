@@ -3,8 +3,8 @@ import axios from "axios";
 let apiUrl;
 
 const apiUrls = {
-  production: "www.api.com/railway/api",
-  development: "http://127.0.0.1:3000/api",
+  production: "https://simple-pokemon-api.herokuapp.com/",
+  development: "https://simple-pokemon-api.herokuapp.com/",
 };
 
 if (window.location.hostname === "localhost") {

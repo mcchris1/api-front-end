@@ -24,7 +24,7 @@ export default function CreatePokemon() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     await createPokemon(pokemon)
-    navigate("/pokemons", {replace: true})
+    navigate("/pokemon", {replace: true})
   }
 
   return (
